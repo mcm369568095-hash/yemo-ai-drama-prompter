@@ -3,6 +3,7 @@
 > 给一段故事，还你一整套开箱即用的 AI 短剧分镜提示词包。
 
 ![Version](https://img.shields.io/badge/version-1.1.0-blue) ![Platform](https://img.shields.io/badge/平台-WorkBuddy-purple) ![Store](https://img.shields.io/badge/SkillHub-已上架-green) ![License](https://img.shields.io/badge/license-MIT-green)
+![微信搜一搜 · 夜秣AI搞钱](assets/wechat-search.jpg)
 
 **夜秣AI短剧生成器**是一个 AI 短剧分镜提示词生产技能，跑在 [WorkBuddy](https://www.workbuddy.cn) 里。输入一段故事、一个剧本、一篇文章，甚至一句主题，产出一整套**可直接投喂 AI 视频模型**的分镜提示词包。
 
@@ -60,4 +61,8 @@ git clone https://github.com/mcm369568095-hash/yemo-ai-drama-prompter.git
 
 ---
 
-**作者**：夜秣 ｜ 更多 AI 实战技能，微信公众号搜「**夜秣AI创业**」
+## 📮 关注公众号「夜秣AI搞钱」
+
+![扫码关注·夜秣AI搞钱](assets/wechat-qr.jpg)
+
+> 更多 AI 实战技能与拆解，微信搜一搜「夜秣AI搞钱」。
