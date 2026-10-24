@@ -1,0 +1,68 @@
+{
+ "title": "最后一班地铁",
+ "subtitle": "都市情感 · 短剧",
+ "preset": "drama",
+ "target_sec": 110,
+ "ratio": "16:9",
+ "style": "电影感写实动画，冷蓝夜色调，霓虹反光，浅景深，颗粒质感",
+ "ref": "cast/定稿/主角定稿.png",
+ "note": "输入示例：把这段换成你自己的故事。shots 是单一真相源，改这里，全部产物跟着变。",
+
+ "shots": [
+  {
+   "id": "c01",
+   "beat": "空站台·末班车",
+   "cast": [],
+   "size_hint": "全景",
+   "sub": "末班地铁还有三分钟进站，站台上只剩两个人。",
+   "ff": "深夜的旧地铁站台，冷白色灯管有一支在闪，长椅上散着几张旧报纸，铁轨向黑暗深处延伸；玻璃幕墙外是雨后的城市霓虹倒影。电影感写实动画，冷蓝夜色调，浅景深，颗粒质感，画面中不出现任何文字。",
+   "v": "The camera drifts slowly along the empty platform. A flickering fluorescent tube buzzes. Rainwater drips from a broken gutter onto the tracks. The space breathes with quiet, cold air."
+  },
+  {
+   "id": "c02",
+   "beat": "她抱着纸箱",
+   "cast": ["林晚"],
+   "size_hint": "中景",
+   "sub": "林晚怀里抱着一个装满杂物的纸箱，箱角露出半张工牌。",
+   "ff": "深夜地铁站台的长椅上，林晚坐着，怀里抱着一个塞满私人物品的纸箱，箱角露出一张蓝色工牌的一角；她低着头，碎发遮住侧脸，脚边放着一把收起来的伞，伞尖还在滴水。电影感写实动画，冷蓝夜色调，浅景深，画面中不出现任何文字。",
+   "v": "The paper box tilts slightly as her arms loosen. A drop of water falls from the umbrella tip. She keeps her eyes down. Faint fluorescent hum surrounds her."
+  },
+  {
+   "id": "c03",
+   "beat": "工牌上的字",
+   "cast": [],
+   "size_hint": "特写",
+   "sub": "纸箱最上面，是一张边角磨白的工牌。",
+   "ff": "极近特写，一只纸箱的顶部，一张蓝色工牌斜放着，边角磨得发白，表面有一道浅浅的划痕，冷白灯光下塑料反着一点微光；背景完全虚化成冷蓝色块。电影感写实动画，浅景深，画面中不出现任何文字。",
+   "v": "The camera holds steady. A faint reflection slides across the plastic card surface as the overhead light flickers once."
+  },
+  {
+   "id": "c04",
+   "beat": "他走过来",
+   "cast": ["周野"],
+   "size_hint": "中景",
+   "sub": "周野从站台另一端走过来，手里的咖啡还冒着热气。",
+   "ff": "深夜地铁站台，周野沿着站台边缘走过来，右手端着一杯还在冒热气的咖啡；他穿着深灰风衣，走了几步，脚步慢了下来，视线落在长椅的方向；背景是虚化的冷蓝色站牌与铁轨。电影感写实动画，冷蓝夜色调，浅景深，画面中不出现任何文字。",
+   "v": "Camera slowly pulls back.\nZhou Ye walks along the platform edge, then his steps slow down and stop. Steam rises steadily from the paper cup. He turns his gaze toward the bench."
+  },
+  {
+   "id": "c05",
+   "beat": "认出来了",
+   "cast": ["林晚", "周野"],
+   "size_hint": "近景",
+   "sub": "两个人隔着三米，谁都没说话。",
+   "ff": "地铁站台，林晚坐在长椅上抬头，周野站在三米外，两人视线相接；冷白顶光斜切下来，把两人切成明暗两半，中间的空气里有细小的灰尘在灯下浮动；背景虚化成深蓝。电影感写实动画，冷蓝夜色调，浅景深，画面中不出现任何文字。",
+   "v": "Camera slowly pushes in.\nLin Wan lifts her head. Zhou Ye stops mid-step, the cup still in his hand. Neither speaks. Dust drifts slowly through the beam of the overhead light.",
+   "line": "好久不见。"
+  },
+  {
+   "id": "c06",
+   "beat": "车来了",
+   "cast": [],
+   "size_hint": "全景",
+   "sub": "末班车进站，把整个站台照成一片白。",
+   "ff": "深夜地铁站台，隧道深处亮起两盏车灯，光线迅速铺满整个站台，把铁轨、长椅和玻璃幕墙全部照白，地上雨水的倒影被拉成长条；画面边缘仍保留冷蓝色调。电影感写实动画，强逆光，浅景深，画面中不出现任何文字。",
+   "v": "Camera whips quickly to the side.\nThe train headlights flood the platform. Reflections on the wet floor stretch and break. The two figures are silhouetted against the glare."
+  }
+ ]
+}

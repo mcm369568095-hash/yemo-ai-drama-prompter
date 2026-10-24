@@ -1,0 +1,91 @@
+# ============================================================================
+# 夜秣AI短剧生成器 —— 视频通道注册表（可选模块）
+# ----------------------------------------------------------------------------
+# 本技能的主产物是「提示词」。如果你还想把提示词直接喂给模型出片，
+# 在这里登记一条通道即可：改顶层 default 指向它，脚本自动识别 type。
+# **任何通道失败都会自动回落到 kenburns**，保证流水线永不断电。
+#
+# 🔴 这里不写任何明文密钥。http_api 通道的 key 从「环境变量」读，只写变量名。
+# ============================================================================
+
+# 默认走哪个通道（成本 0 的本地兜底永远是保命底牌）
+default: kenburns
+
+# 全局兜底与重试策略
+policy:
+  fallback_to: kenburns      # 任何失败自动降级到这个 key
+  max_retry: 2               # 单镜头最大重试
+  retry_wait: [5, 12]        # 退避秒数
+  hard_timeout: 420          # 单镜头硬超时（秒）
+  keep_first_frame: true     # image2video 失败时，用首帧图直接走 kenburns
+
+# 输出规格（全站统一，拼接时不缩放就不会糊）
+output:
+  size: 1920x1080
+  fps: 25
+  crf: 20
+  pix_fmt: yuv420p
+
+providers:
+
+  # ------------------------------------------------------------------
+  # ① 本地兜底：ffmpeg Ken Burns（纯成本 0，永不失败）
+  #    静态首帧推拉成有呼吸感的运动镜头。过渡镜、铺垫镜全用它，不花钱。
+  # ------------------------------------------------------------------
+  kenburns:
+    type: local_ffmpeg
+    desc: 静态图做缓慢推拉/平移，成本 0，所有失败的最后归宿
+    cost_per_shot: 0
+
+  # ------------------------------------------------------------------
+  # ② 示例：命令行型视频模型（很多官方 CLI 走这条）
+  #    把 cmd 换成你手上那条命令即可；占位符见文末说明。
+  # ------------------------------------------------------------------
+  my_cli_model:
+    type: cli
+    desc: 示例 · 命令行型视频模型
+    mode: image2video
+    cmd: "your-video-cli gen --prompt \"{prompt}\" --image \"{first_frame}\" --seconds {duration} --out \"{out}\""
+    shell: true
+    timeout: 1800
+    cost_per_shot: 3           # 仅用于成本估算，不是账单
+
+  # ------------------------------------------------------------------
+  # ③ 示例：REST 风格的文生视频/图生视频接口（HTTP 异步轮询型）
+  #    把下面整段复制改名，填上你的模型即可 —— 这是最常用的一种
+  # ------------------------------------------------------------------
+  # my_model_t2v:
+  #   type: http_api
+  #   desc: 我接入的某视频模型
+  #   mode: text2video            # text2video | image2video
+  #   endpoint: https://api.example.com/v1/videos/generations
+  #   model: your-model-name
+  #   key_env: MY_VIDEO_API_KEY   # 环境变量名（**不要在这里写明文 key**）
+  #   auth_header: "Authorization: Bearer {key}"
+  #   request:                    # 请求体模板，占位符见文末说明
+  #     prompt: "{prompt}"
+  #     model: "{model}"
+  #     seconds: "{duration}"
+  #     size: "{size}"
+  #   # --- 异步轮询三要素（同步返回的可省略） ---
+  #   poll:
+  #     task_id_path: data.id           # 提交响应里任务 ID 的取值路径
+  #     status_path: data.status
+  #     status_done: [succeeded, success, completed]
+  #     status_fail: [failed, error, cancelled]
+  #     interval: 8
+  #     max_wait: 600
+  #     result_path: data.video_url     # 完成后视频地址/Base64 的取值路径
+  #     result_kind: url                # url | base64
+  #   download_headers:                 # 下载视频时附加的头（很多 CDN 要 UA）
+  #     User-Agent: "Mozilla/5.0"
+
+# ----------------------------------------------------------------------------
+# 占位符说明（任何 type 通用）：
+#   {prompt}        镜头提示词（shots.json 里 shots[].prompt）
+#   {duration}      建议时长（秒）
+#   {size}          1920x1080
+#   {out}           本镜头输出路径 clips/sXX.mp4
+#   {first_frame}   若首帧图已生成，这里是它的本地绝对路径（image2video 用）
+#   {model} {key}   来自本条配置的 model / 环境变量读取结果
+# ----------------------------------------------------------------------------
