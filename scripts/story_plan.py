@@ -6,7 +6,7 @@
   python story_plan.py <workdir> --preset drama --apply    # 写回 shots.json
   python story_plan.py <workdir> --check                   # 只体检现有分镜，不改
 
-设计依据: references/director_presets.md
+设计依据: references/导演层预设库.md
 核心作用: 治「全片一个景别、一个机位、一种光」；单镜时长压到 3~6s。
 
 为什么需要它:
@@ -20,7 +20,7 @@ import os
 import re
 import sys
 
-# ── 预设表（与 references/director_presets.md 一一对应）─────────────────────
+# ── 预设表（与 references/导演层预设库.md 一一对应）─────────────────────
 PRESETS = {
     "drama": {
         "name": "剧情叙事",
